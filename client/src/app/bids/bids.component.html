@@ -1,0 +1,37 @@
+<h2>Bid Now!</h2>
+
+<a href="/logout">Log out</a>
+
+<h3>Product 1</h3>
+<form (submit)='bidProductOne(user._id, user.productOneBid)' #formOne>
+	<input type='number' name="productOneBid" [(ngModel)]="user.productOneBid" #productOneBid min=1>
+	<input type='submit' value="Bid">
+</form>
+<span *ngIf='!formOne.errors'></span>
+<div *ngFor='let user of users'>
+	<span *ngIf='user.productOneBid'>{{user.name}}: ${{ user.productOneBid }}</span>
+</div>
+
+
+
+<h3>Product 2</h3>
+<form (submit)='bidProductTwo(user._id, user.productTwoBid)'>
+	<input type='number' name="productOneBid" [(ngModel)]="user.productTwoBid" #productTwoBid min="1">
+	<input type='submit' value="Bid">
+</form>
+<div *ngFor='let user of users'>
+	<span *ngIf='user.productTwoBid'>{{user.name}}: ${{ user.productTwoBid }}</span>
+</div>
+
+
+<h3>Product 3</h3>
+<form (submit)='bidProductThree(user._id, user.productThreeBid)'>
+	<input type='number' name="productThreeBid" [(ngModel)]="user.productThreeBid" #productThreeBid min="1">
+	<input type='submit' value="Bid">
+</form>
+<div *ngFor='let user of users'>
+	<span *ngIf='user.productThreeBid'>{{user.name}}: ${{ user.productThreeBid }}</span>
+</div>
+
+<a [routerLink]="['/result']">End Bid</a>
+<router-outlet></router-outlet>
